@@ -2,6 +2,7 @@ import openai
 from dotenv import load_dotenv
 load_dotenv()
 import os
+import sys
 from getTextFromUrl import getTextFromUrl
 from writeToDocx import writeToDocx
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -40,7 +41,7 @@ Cost Management: Collaborate with the cloud FinOps team to identify cost reducti
 Trends and Innovations: Stay updated on cloud technology trends to make informed decisions and maintain competitive edge.
 Troubleshooting: Lead troubleshooting efforts during cloud-related outages.
 """
-answer = getAnswerFrontext(webpage_text, jobDescription)
+answer = getAnswerFrontext(webpage_text, sys.argv[1])
 
 print("Answer:", answer)
 writeToDocx("cover-letter.docx", answer.choices[0].message["content"])
