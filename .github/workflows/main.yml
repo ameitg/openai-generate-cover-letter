@@ -15,8 +15,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
+      
       - name: Run script with custom input
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           pip3 install --use-pep517 --break-system-packages -r requirements.txt
           python3 chatbot.py
