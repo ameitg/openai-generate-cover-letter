@@ -41,7 +41,8 @@ Cost Management: Collaborate with the cloud FinOps team to identify cost reducti
 Trends and Innovations: Stay updated on cloud technology trends to make informed decisions and maintain competitive edge.
 Troubleshooting: Lead troubleshooting efforts during cloud-related outages.
 """
-answer = getAnswerFrontext(webpage_text, sys.argv[1])
+jobDescription= f'{sys.argv[1]}'
+answer = getAnswerFrontext(webpage_text,jobDescription)
 
 print("Answer:", answer)
 writeToDocx("cover-letter.docx", answer.choices[0].message["content"])
