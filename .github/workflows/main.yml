@@ -22,3 +22,8 @@ jobs:
         run: |
           pip3 install --use-pep517 --break-system-packages -r requirements.txt
           python3 chatbot.py
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: cover-letter.docx
