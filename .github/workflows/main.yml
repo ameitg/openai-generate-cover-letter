@@ -3,10 +3,13 @@ name: Generate cover letter
 on:
   workflow_dispatch:
     inputs:
-      customInput:
+      company:
         description: 'cover letter for which company'
         required: true
-        default: 'default-value'
+        type: string
+      jobDescription:
+        description: 'job description'
+        required: true
         type: string
 
 jobs:
@@ -21,9 +24,10 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           pip3 install --use-pep517 --break-system-packages -r requirements.txt
-          python3 chatbot.py
+          python3 chatbot.py ${{ github.event.inputs.company }} ${{ github.event.inputs.jobDescription }}
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
-          name: my-artifact
+          name: ${{ github.event.inputs.customInput }}
           path: cover-letter.docx
+          compression-level: 0
