@@ -14,7 +14,7 @@ on:
 
 jobs:
   run-script:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -26,8 +26,8 @@ jobs:
           pip3 install --use-pep517 --break-system-packages -r requirements.txt
           python3 chatbot.py "${{ github.event.inputs.jobDescription }}"
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
-          name: ${{ github.event.inputs.customInput }}
+          name: ${{ github.event.inputs.company }}
           path: cover-letter.docx
           compression-level: 0
