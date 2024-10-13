@@ -1,0 +1,22 @@
+name: Generate cover letter
+
+on:
+  workflow_dispatch:
+    inputs:
+      customInput:
+        description: 'cover letter for which company'
+        required: true
+        default: 'default-value'
+        type: string
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run script with custom input
+        run: |
+          pip install -r requirements.txt
+          python3 chatbot.py
