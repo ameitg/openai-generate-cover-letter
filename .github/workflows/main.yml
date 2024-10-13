@@ -23,7 +23,7 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          pip3 install --use-pep517 --break-system-packages -r requirements.txt
+          pip3 install -r requirements.txt
           python3 chatbot.py "${{ github.event.inputs.jobDescription }}"
       - name: Upload artifact
         uses: actions/upload-artifact@v4
